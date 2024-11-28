@@ -1,23 +1,18 @@
 import React from "react";
+import UserInfor from "./UserInfor";
+import DisplayInfor from "./DisplayInfor";
 
 class MyComponent extends React.Component {
-  state = {
-    name: "MQ",
-    age: 20,
-    address: "QN",
-  };
-
-  handleClick(event) {
-    // console.log(">>Click me");
-    console.log(event);
-  }
   //jSX
+
   render() {
     return (
       <div>
-        My name is {this.state.name} , I am {this.state.age} years old , I live
-        in {this.state.address}
-        <button onClick={this.handleClick}>Click Me</button>
+        <UserInfor />
+        <br />
+        <DisplayInfor name="Quang" age="20" />
+        <hr />
+        <DisplayInfor name={"Quang"} age={21} />
       </div>
     );
   }
