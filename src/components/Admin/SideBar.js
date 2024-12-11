@@ -1,6 +1,6 @@
 import React from "react";
 import "react-pro-sidebar/dist/css/styles.css";
-import { FaGem, FaHeart } from "react-icons/fa";
+import { FaGem, FaHeart, FaReact } from "react-icons/fa";
 import {
   Menu,
   MenuItem,
@@ -17,6 +17,11 @@ import {
   FaRegLaughWink,
 } from "react-icons/fa";
 import sidebarBg from "../../components/assets/nhi.jpeg";
+import { NavLink, Route, Routes } from "react-router-dom";
+import HomePage from "../Home/HomePage";
+import App from "../../App";
+import { Link } from "react-router-dom";
+import { Button } from "react-bootstrap";
 const SideBar = (props) => {
   const { image, collapsed, toggled, handleToggleSidebar } = props;
   return (
@@ -41,28 +46,31 @@ const SideBar = (props) => {
               whiteSpace: "nowrap",
             }}
           >
-            BLACK WEB
+            <div>
+              <NavLink to="/" className="navbar-brand">
+                <FaReact size="30px" color="blue" /> W E B
+              </NavLink>
+            </div>
           </div>
         </SidebarHeader>
 
         <SidebarContent>
           <Menu iconShape="circle">
-            <MenuItem
-              icon={<FaTachometerAlt />}
-              suffix={<span className="badge red">New</span>}
-            >
+            <MenuItem icon={<FaTachometerAlt />}>
               Dashboard
+              <Link to="/admins" />
             </MenuItem>
             <MenuItem icon={<FaGem />}> Components</MenuItem>
           </Menu>
           <Menu iconShape="circle">
-            <SubMenu
-              suffix={<span className="badge yellow">3</span>}
-              icon={<FaRegLaughWink />}
-            >
-              <MenuItem> 1</MenuItem>
-              <MenuItem> 2</MenuItem>
-              <MenuItem> 3</MenuItem>
+            <SubMenu icon={<FaRegLaughWink />} title="Features">
+              <MenuItem>
+                {" "}
+                User Management
+                <Link to="/admins/manage-users" />
+              </MenuItem>
+              <MenuItem> Quiz Management</MenuItem>
+              <MenuItem> Question Management</MenuItem>
             </SubMenu>
           </Menu>
         </SidebarContent>
